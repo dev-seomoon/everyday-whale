@@ -37,17 +37,18 @@
   </section>
 
   <section class="main-todo">
-  <ul>
-    {#each $todoList as todo}
-      <li>
-        <span class="todo">
-          <span class="todo-check" />
-          <span class="todo-text">{todo.todo}</span>
-        </span>
-        <button type="button" id={todo.id} />
-      </li>
-    {/each}
-  </ul>
+    <ul>
+      {#each $todoList as todo}
+        <li>
+          <span class="todo">
+            <span class="todo-check" />
+            <span class="todo-text">{todo.todo}</span>
+          </span>
+          <button type="button" id={todo.id} />
+        </li>
+      {/each}
+    </ul>
+  </section>
 
 </main>
 
