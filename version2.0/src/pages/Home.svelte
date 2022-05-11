@@ -17,9 +17,18 @@
 <main>
 
   <nav>
-    <a href="/#/whale"><img class="btn-img" src="images/ic_whale.png" alt="웨일"/><span>웨일</span></a>
-    <a href="/#/todo"><img class="btn-img" src="images/ic_todo.png" alt="할일" /><span>할일</span></a>
-    <a href="/#/setting"><img class="btn-img" src="images/ic_setting.png" alt="설정" /><span>설정</span></a>
+    <a href="/#/whale">
+      <img class="btn-img" src="images/ic_whale.png" alt="웨일"/>
+      <span>웨일</span>
+    </a>
+    <a href="/#/todo">
+      <img class="btn-img" src="images/ic_todo.png" alt="할일" />
+      <span>할일</span>
+    </a>
+    <a href="/#/setting">
+      <img class="btn-img" src="images/ic_setting.png" alt="설정" />
+      <span>설정</span>
+    </a>
   </nav>
 
   <section id="main-whale">
