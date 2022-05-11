@@ -1,5 +1,5 @@
 <script>
-  import { name, level } from '../store.js';
+  import { name, level, todoList } from '../store.js';
 
   const LEVEL_SCOPE = [0, 3, 8, 15, 26];
 
@@ -31,10 +31,23 @@
     </a>
   </nav>
 
-  <section id="main-whale">
+  <section class="main-whale">
     <img class="whale-img swing" src="images/whale{status}.gif" alt="웨일 {status}단계" />
     <h2>Lv.{$level} {$name}</h2>
   </section>
+
+  <section class="main-todo">
+  <ul>
+    {#each $todoList as todo}
+      <li>
+        <span class="todo">
+          <span class="todo-check" />
+          <span class="todo-text">{todo.todo}</span>
+        </span>
+        <button type="button" id={todo.id} />
+      </li>
+    {/each}
+  </ul>
 
 </main>
 
@@ -59,13 +72,13 @@
 
   .btn-img {
     width: 35px;
+    margin-bottom: 5px;
   }
 
   span {
     color: #296e81;
     font-size: 1.68rem;
     font-weight: lighter;
-    margin-top: 5px;
   }
 
   /* whale */
@@ -95,5 +108,65 @@
     100% {
       transform: translateY(0);
     }
+  }
+
+  /* todoList */
+  .main-todo {
+    width: 100%;
+    position: absolute;
+    top: 615px;
+    padding-bottom: 30px;
+  }
+
+  ul {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 30px;
+  }
+
+  li {
+    width: 100%;
+    height: 41px;
+    margin-bottom: 10px;
+    padding: 0 11px;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #f2f7ff;
+    border: 1.5px solid #003c72;
+    border-radius: 8px;
+  }
+
+  .todo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .todo-text {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.56rem;
+    color: #003c72;
+  }
+
+  .todo-check {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: url("/images/unchecked.png") no-repeat;
+    background-size: 25px;
+    margin-right: 10px;
+  }
+
+  button {
+    width: 15px;
+    height: 15px;
+    background: url('/images/ic_close.png') no-repeat transparent;
+    background-size: 15px;
+    border: none;
+    cursor: pointer;
   }
 </style>
