@@ -1,7 +1,13 @@
-import { readable } from 'svelte/store';
+import { writable } from 'svelte/store';
 
-export const name = readable(localStorage.getItem('name'));
+export const name = writable(localStorage.getItem('name'));
+export const level = writable(localStorage.getItem('level'));
+export const exp = writable(localStorage.getItem('exp'));
+export const todoList = writable(localStorage.getItem('todoList'));
+export const doneCount = writable(localStorage.getItem('sumCount'));
 
-export const level = readable(localStorage.getItem('level'));
-
-export const exp = readable(localStorage.getItem('exp'));
+name.subscribe(value => localStorage.setItem('name', value));
+level.subscribe(value => localStorage.setItem('level', value));
+exp.subscribe(value => localStorage.setItem('exp', value));
+todoList.subscribe(value => localStorage.setItem('todoList', value));
+doneCount.subscribe(value => localStorage.setItem('sumCount', value));
