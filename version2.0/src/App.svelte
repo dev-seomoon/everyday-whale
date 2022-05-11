@@ -6,14 +6,12 @@
   import Setting from './pages/Setting.svelte';
 </script>
 
-<main>
   <Router routes={{
     '/': Home,
     '/whale': Whale,
     '/todo': Todo,
     '/setting': Setting
   }} />
-</main>
 
 <style>
 
