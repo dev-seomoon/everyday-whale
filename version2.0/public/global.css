@@ -5,6 +5,7 @@ html,
 body {
   position: relative;
   width: 100%;
+  max-width: 590px;
   height: 100%;
   font-size: 62.5%;
 }
