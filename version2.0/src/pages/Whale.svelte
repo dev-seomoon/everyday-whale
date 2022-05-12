@@ -31,7 +31,24 @@
     </div>
   </section>
 
-  <section class="whale-story"></section>
+  <section class="whale-story">
+    <h3>
+      <img src="/images/heart.png" alt="mini heart" />
+      {$name}의 이야기
+    </h3>
+    <p>
+      고래의 성장단계에 따른 스토리가 표시됩니다.
+      <br />
+      버튼을 클릭해보세요!
+    </p>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </section>
 
 </main>
 
@@ -93,6 +110,27 @@
     font-size: 0.9rem;
     font-weight: 600;
     padding: 0 6px;
+  }
+
+  .whale-story {
+    margin-top: 4rem;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 2rem;
+    color: #006689;
+    margin-bottom: 0.3rem;
+  }
+
+  h3 > img {
+    width: 8px;
+    margin: 4px 6px;
+  }
+
+  p {
+    font-size: 1.56rem;
+    color: #8C8C8C;
   }
 
 </style>
