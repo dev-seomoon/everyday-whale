@@ -1,6 +1,6 @@
 <script>
   import { name, level, exp, status} from '../store.js';
-  import { LEVEL_SCOPE } from '../constants.js';
+  import { LEVEL_SCOPE, STORY } from '../constants.js';
   import BackButton from '../components/BackButton.svelte';
   import StoryButton from '../components/StoryButton.svelte';
 </script>
@@ -27,17 +27,25 @@
       <img src="/images/heart.png" alt="mini heart" />
       {$name}의 이야기
     </h3>
-    <p>
+    <p class="desc">
       고래의 성장단계에 따른 스토리가 표시됩니다.
       <br />
       버튼을 클릭해보세요!
     </p>
-    <ul>
+    <ul class="story-btn-list">
       {#each LEVEL_SCOPE as _, i}
-        <li>
+        <li class="story-btn-item">
           <StoryButton locked={$status < i + 1} order={i + 1}/>
         </li>
       {/each}
+    </ul>
+    <ul class="story-list">
+    {#each Array(Number($level)) as _, index (index)}
+      <li class="story-item">
+        <h4>#{index + 1}번째 이야기</h4>  
+        <p>{STORY[index]}</p>
+      </li>
+    {/each}
     </ul>
   </section>
 
@@ -119,18 +127,37 @@
     margin: 4px 6px;
   }
 
-  p {
+  .desc {
     font-size: 1.56rem;
     color: #8C8C8C;
     margin-bottom: 1.5rem;
   }
 
-  ul {
+  .story-btn-list {
     display: flex;
+    justify-content: center;
   }
 
-  li {
+  .story-btn-item {
     margin: 0 2.5px;
+  }
+
+  .story-list {
+    width: 100%;
+    color: #006689;
+    font-size: 1.7rem;
+    text-align: left;
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+
+  .story-item {
+    margin: 1.7rem;
+    margin-bottom: 2rem;
+  }
+
+  .story-item > p {
+    font-family: 'Noto Sans KR', sans-serif;
   }
 
 </style>
