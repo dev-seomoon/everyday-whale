@@ -1,17 +1,7 @@
 <script>
+  import { name, level, exp, status, LEVEL_SCOPE } from '../store.js';
   import BackButton from '../components/BackButton.svelte';
-  import { name, level, exp } from '../store.js';
-
-  const LEVEL_SCOPE = [0, 3, 8, 15, 26];
-
-  const getWhaleStatus = () => {
-    for (var i = 0; i < LEVEL_SCOPE.length; i++) {
-      if ($level < LEVEL_SCOPE[i]) break;
-    }
-    return i;
-  };
-
-  const status = getWhaleStatus();
+  import StoryButton from '../components/StoryButton.svelte';
 </script>
 
 <main>
@@ -19,7 +9,7 @@
   <BackButton />
 
   <section class="whale-whale">
-    <img class="whale-img swing" src="images/whale{status}.gif" alt="웨일 {status}단계" />
+    <img class="whale-img swing" src="images/whale{$status}.gif" alt="웨일 {$status}단계" />
     <div class="whale-name-wrap">
       <h2>Lv.{$level} {$name}</h2>
       <button type="button" class="btn-modify-name">이름 변경</button>
@@ -42,11 +32,11 @@
       버튼을 클릭해보세요!
     </p>
     <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+      {#each LEVEL_SCOPE as _, i}
+        <li>
+          <StoryButton locked={$status < i + 1} order={i + 1}/>
+        </li>
+      {/each}
     </ul>
   </section>
 
@@ -131,6 +121,15 @@
   p {
     font-size: 1.56rem;
     color: #8C8C8C;
+    margin-bottom: 1.5rem;
+  }
+
+  ul {
+    display: flex;
+  }
+
+  li {
+    margin: 0 2.5px;
   }
 
 </style>
