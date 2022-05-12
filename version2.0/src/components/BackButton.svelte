@@ -5,6 +5,12 @@
 </nav>
 
 <style>
+  nav {
+    width: 100%;
+  }
+  a {
+    display: inline-block;
+  }
   img {
     width: 30px;
     margin: 15px;
