@@ -58,13 +58,8 @@
 
 <style>
   /* container */
-  main {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: white url("/images/background.png") no-repeat;
-    overflow: visible;
+  main { 
+    background: white url('/images/background.png') no-repeat; 
   }
 
   /* menu */
@@ -93,26 +88,7 @@
 
   h2 {
     font-size: 3rem;
-    color: #003c72;
-    text-shadow: 1px 1px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
-    text-align: center;
     margin-top: 3rem;
-  }
-
-  .swing {
-    animation: swing 2s ease-in-out infinite;
-  }
-
-  @keyframes swing {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(15px);
-    }
-    100% {
-      transform: translateY(0);
-    }
   }
 
   /* todoList */
