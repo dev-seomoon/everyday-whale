@@ -21,7 +21,7 @@
 
   <section class="main-whale">
     <img class="whale-img swing" src="images/whale{$status}.gif" alt="웨일 {$status}단계" />
-    <h2>Lv.{$level} {$name}</h2>
+    <h2 class="whale-name">Lv.{$level} {$name}</h2>
   </section>
 
   <section class="main-todo">
