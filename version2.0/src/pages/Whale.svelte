@@ -1,5 +1,6 @@
 <script>
-  import { name, level, exp, status, LEVEL_SCOPE } from '../store.js';
+  import { name, level, exp, status} from '../store.js';
+  import { LEVEL_SCOPE } from '../constants.js';
   import BackButton from '../components/BackButton.svelte';
   import StoryButton from '../components/StoryButton.svelte';
 </script>
