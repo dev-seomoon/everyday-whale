@@ -7,6 +7,7 @@
   <section class="first">
     <h2>초기화</h2>
     <p>지금까지의 모든 기록을 초기화하고 다시 시작합니다.</p>
+    <button type="button">초기화하기</button>
   </section>
   <hr />
   <section>
@@ -53,6 +54,18 @@
 
   section.first {
     margin-top: 3rem;
+  }
+
+  button {
+    font-family: inherit;
+    font-size: 1.9rem;
+    color: white;
+    background-color: #003c72;
+    border-radius: 8px;
+    width: 120px;
+    height: 35px;
+    line-height: 38.5px;
+    margin-top: 5px;
   }
 
   hr {
