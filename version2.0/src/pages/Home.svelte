@@ -39,15 +39,19 @@
   <section class="main-todo">
     <ul>
       {#each $todoList as todo}
-        <li>
+        <li class="todo-wrap">
           <span class="todo">
             <span class="todo-check" />
             <span class="todo-text">{todo.todo}</span>
           </span>
-          <button type="button" id={todo.id} />
+          <button type="button" id={todo.id} class="btn-delete" />
         </li>
       {/each}
     </ul>
+    <form class="todo-wrap">
+      <input type="text" placeholder="새로운 할 일" />
+      <button type="button" class="btn-add" />
+    </form>
   </section>
 
 </main>
@@ -116,16 +120,16 @@
     width: 100%;
     position: absolute;
     top: 615px;
-    padding-bottom: 30px;
+    padding: 0 30px 30px;
+    box-sizing: border-box;
   }
 
   ul {
     width: 100%;
     box-sizing: border-box;
-    padding: 0 30px;
   }
 
-  li {
+  .todo-wrap {
     width: 100%;
     height: 41px;
     margin-bottom: 10px;
@@ -162,12 +166,26 @@
     margin-right: 10px;
   }
 
-  button {
+  .btn-delete {
     width: 15px;
     height: 15px;
     background: url('/images/ic_close.png') no-repeat transparent;
     background-size: 15px;
-    border: none;
-    cursor: pointer;
   }
+
+  .btn-add {
+    width: 25px;
+    height: 25px;
+    background: url('/images/plus.png') no-repeat transparent;
+    background-size: 25px;
+  }
+
+  input {
+    width: 80%;
+    background: none;
+    border: none;
+    font-size: 1.56rem;
+    font-weight: 600;
+  }
+
 </style>
