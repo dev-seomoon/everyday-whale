@@ -3,6 +3,14 @@
   import { LEVEL_SCOPE, STORY } from '../constants.js';
   import BackButton from '../components/BackButton.svelte';
   import StoryButton from '../components/StoryButton.svelte';
+
+  let selectedStoryBtn = 0;
+  let currentScope;
+
+  const clickStoryBtn = (order) => {
+    selectedStoryBtn = order;
+    currentScope = LEVEL_SCOPE[selectedStoryBtn - 1];
+  };
 </script>
 
 <main>
@@ -10,19 +18,24 @@
   <BackButton />
 
   <section class="whale-whale">
+
     <img class="whale-img swing" src="images/whale{$status}.gif" alt="웨일 {$status}단계" />
+
     <div class="whale-name-wrap">
       <h2>Lv.{$level} {$name}</h2>
       <button type="button" class="btn-modify-name">이름 변경</button>
     </div>
+
     <div class="progress-container">
       <div class="progress-bar" style="width: {$exp}">
       </div>
       <div class="progress-label">{$exp}</div>
     </div>
+
   </section>
 
   <section class="whale-story">
+
     <h3>
       <img src="/images/heart.png" alt="mini heart" />
       {$name}의 이야기
@@ -32,21 +45,35 @@
       <br />
       버튼을 클릭해보세요!
     </p>
+
     <ul class="story-btn-list">
       {#each LEVEL_SCOPE as _, i}
         <li class="story-btn-item">
-          <StoryButton locked={$status < i + 1} order={i + 1}/>
+          <StoryButton
+            locked={$status < i + 1}
+            order={i + 1}
+            clickStoryBtn={clickStoryBtn}
+          />
         </li>
       {/each}
     </ul>
-    <ul class="story-list">
-    {#each Array(Number($level)) as _, index (index)}
-      <li class="story-item">
-        <h4>#{index + 1}번째 이야기</h4>  
-        <p>{STORY[index]}</p>
-      </li>
-    {/each}
-    </ul>
+
+    {#if selectedStoryBtn > $status}
+      <div class="locked-story">
+        <img src="/images/ic_locked.png" alt="자물쇠" class="lock" />
+        <p>{selectedStoryBtn}단계 성장 시 열리는 스토리입니다.</p>
+      </div>
+    {:else if selectedStoryBtn > 0}
+      <ul class="story-list">
+        {#each STORY[selectedStoryBtn - 1].slice(0, $level - currentScope) as story, i}
+          <li class="story-item">
+            <h4>#{currentScope + i + 1}번째 이야기</h4>
+            <p>{story}</p>
+          </li>
+        {/each}
+      </ul>
+    {/if}
+
   </section>
 
 </main>
@@ -158,6 +185,17 @@
 
   .story-item > p {
     font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  .locked-story {
+    color: #006689;
+    font-size: 1.7rem;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-top: 3.75rem;
+  }
+
+  .lock {
+    width: 30px;
   }
 
 </style>
