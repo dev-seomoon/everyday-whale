@@ -1,17 +1,5 @@
 <script>
-  import { name, level, todoList } from '../store.js';
-
-  const LEVEL_SCOPE = [0, 3, 8, 15, 26];
-
-  const getWhaleStatus = () => {
-    for (var i = 0; i < LEVEL_SCOPE.length; i++) {
-      if ($level < LEVEL_SCOPE[i]) break;
-    }
-    return i;
-  };
-
-  const status = getWhaleStatus();
-
+  import { name, level, todoList, status } from '../store.js';
 </script>
 
 <main>
@@ -32,7 +20,7 @@
   </nav>
 
   <section class="main-whale">
-    <img class="whale-img swing" src="images/whale{status}.gif" alt="웨일 {status}단계" />
+    <img class="whale-img swing" src="images/whale{$status}.gif" alt="웨일 {$status}단계" />
     <h2>Lv.{$level} {$name}</h2>
   </section>
 
