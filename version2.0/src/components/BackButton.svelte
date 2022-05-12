@@ -1,6 +1,13 @@
+<script>
+  export let white;
+</script>
+
 <nav>
   <a href="/">
-    <img src="/images/ic_back.png" alt="뒤로가기" />
+    <img
+      src="/images/ic_back{white ? '_white' : ''}.png"
+      alt="뒤로가기"
+    />
   </a>
 </nav>
 

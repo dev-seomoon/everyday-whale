@@ -2,4 +2,6 @@
   import BackButton from "../components/BackButton.svelte";
 </script>
 
-<BackButton />
+<main class="back-wave-bg">
+  <BackButton white />
+</main>

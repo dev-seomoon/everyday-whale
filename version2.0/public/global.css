@@ -29,6 +29,11 @@ main {
   overflow: visible;
 }
 
+.back-wave-bg {
+  background: white url('/images/back_wave.png') no-repeat;
+  background-size: 590px;
+}
+
 ul {
   list-style: none;
 }
