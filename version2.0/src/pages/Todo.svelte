@@ -3,11 +3,11 @@
   import BackButton from '../components/BackButton.svelte';
   import DoneItem from '../components/DoneItem.svelte';
   const getPagesLength = () => {
-    let length = 1;
+    let length = 0;
     if ($doneCount % 10 === 0)
-      length += $doneCount / 10;
+      length += parseInt($doneCount / 10);
     else
-      length += $doneCount / 10 + 1;
+      length += parseInt($doneCount / 10) + 1;
     return length;
   }
   let pages = {
@@ -21,8 +21,7 @@
   <h3>
     <img src="/images/heart.png" alt="mini heart" />
     지금까지 
-    <span class="count">{$doneCount}개</span>
-    의 할 일을 끝냈습니다. 
+    <span class="count">{$doneCount}개</span>의 할 일을 끝냈습니다. 
     <img src="/images/heart.png" alt="mini heart" />
   </h3>
   <ul class="donelist">

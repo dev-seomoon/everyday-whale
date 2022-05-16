@@ -5,7 +5,7 @@ export const name = writable(localStorage.getItem('name'));
 export const level = writable(localStorage.getItem('level'));
 export const exp = writable(localStorage.getItem('exp'));
 export const todoList = writable(JSON.parse(localStorage.getItem('todoList')));
-export const doneCount = writable(localStorage.getItem('sumCount'));
+export const doneCount = writable(Number(localStorage.getItem('sumCount')));
 
 export const STORIES = [];
 

@@ -1,6 +1,6 @@
 <script>
   import { nanoid } from 'nanoid';
-  import { todoList } from '../store.js';
+  import { todoList, doneCount } from '../store.js';
   import Nav from '../components/Nav.svelte';
   import TodoItem from '../components/TodoItem.svelte';
   import MainWhale from '../components/MainWhale.svelte';
@@ -35,6 +35,7 @@
       const newTodoList = [...$todoList];
       newTodoList[index].finishDate = getDate();
       todoList.set(newTodoList);
+      doneCount.update(count => count + 1);
     }
   };
 
