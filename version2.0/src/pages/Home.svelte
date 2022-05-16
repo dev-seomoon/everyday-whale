@@ -27,6 +27,14 @@
   const removeTodo = (id) => {
     todoList.update(list => list.filter(todo => todo.id !== id));
   };
+
+  const toggleTodo = (id) => {
+    const newTodoList = [...$todoList];
+    const index = newTodoList.findIndex(todo => todo.id === id);
+    newTodoList[index].isChecked = !newTodoList[index].isChecked;
+    
+    todoList.set(newTodoList);
+  };
 </script>
 
 <main>
@@ -35,7 +43,11 @@
   <section class="main-todo">
     <ul>
       {#each $todoList as todo}
-        <TodoItem todo={todo} removeTodo={removeTodo} />
+        <TodoItem 
+          todo={todo}
+          removeTodo={removeTodo}
+          toggleTodo={toggleTodo}
+        />
       {/each}
     </ul>
     <form class="todo-box" on:submit={addTodo} >
