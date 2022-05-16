@@ -7,16 +7,25 @@
 
   let todoValue = '';
 
+  const getDate = () => {
+    const date = new Date();
+    return `${date.getFullYear()}-${(date.getMonth() + 1)}-${date.getDate()}`;
+  };
+
   const addTodo = (e) => {
     e.preventDefault();
-    todoList.set([...$todoList, {
+    todoList.update(list => [...list, {
       id: nanoid(),
       todo: todoValue,
       isChecked: false,
-      addDate: new Date().toISOString().slice(0, 10),
+      addDate: getDate(),
       finishDate: null,
     }]);
     todoValue = '';
+  };
+
+  const removeTodo = (id) => {
+    todoList.update(list => list.filter(todo => todo.id !== id));
   };
 </script>
 
@@ -26,7 +35,7 @@
   <section class="main-todo">
     <ul>
       {#each $todoList as todo}
-        <TodoItem todo={todo} />
+        <TodoItem todo={todo} removeTodo={removeTodo} />
       {/each}
     </ul>
     <form class="todo-box" on:submit={addTodo} >

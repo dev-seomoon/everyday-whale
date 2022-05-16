@@ -1,5 +1,6 @@
 <script>
   export let todo;
+  export let removeTodo;
 </script>
 
 <li class="todo-box">
@@ -7,7 +8,7 @@
     <span class="todo-check" />
     <span class="todo-text">{todo.todo}</span>
   </span>
-  <button type="button" />
+  <button type="button" on:click={() => removeTodo(todo.id)} />
 </li>
 
 <style>
