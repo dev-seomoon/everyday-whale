@@ -9,7 +9,7 @@
     <span class="todo-check" />
     <span class="todo-text">{todo.todo}</span>
   </span>
-  <button type="button" on:click={() => removeTodo(todo.id)} />
+  <button type="button" on:click={() => removeTodo(todo.id, todo.isChecked)} />
 </li>
 
 <style>

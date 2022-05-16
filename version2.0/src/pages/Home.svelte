@@ -7,6 +7,7 @@
 
   let todoValue = '';
 
+  // 현재 날짜를 2022-05-17 형식으로 반환
   const getDate = () => {
     const date = new Date();
     return `${date.getFullYear()}-${(date.getMonth() + 1)}-${date.getDate()}`;
@@ -24,13 +25,22 @@
     todoValue = '';
   };
 
-  const removeTodo = (id) => {
-    todoList.update(list => list.filter(todo => todo.id !== id));
+  const removeTodo = (id, checked) => {
+    // 완료되지 않은 할 일 : 리스트에서 삭제
+    if (!checked)
+      todoList.update(list => list.filter(todo => todo.id !== id));
+    // 완료된 할 일 : finishDate 설정
+    else {
+      const index = $todoList.findIndex(todo => todo.id === id);
+      const newTodoList = [...$todoList];
+      newTodoList[index].finishDate = getDate();
+      todoList.set(newTodoList);
+    }
   };
 
   const toggleTodo = (id) => {
+    const index = $todoList.findIndex(todo => todo.id === id);
     const newTodoList = [...$todoList];
-    const index = newTodoList.findIndex(todo => todo.id === id);
     newTodoList[index].isChecked = !newTodoList[index].isChecked;
     
     todoList.set(newTodoList);
@@ -43,11 +53,13 @@
   <section class="main-todo">
     <ul>
       {#each $todoList as todo}
-        <TodoItem 
-          todo={todo}
-          removeTodo={removeTodo}
-          toggleTodo={toggleTodo}
-        />
+        {#if !todo.finishDate}
+          <TodoItem 
+            todo={todo}
+            removeTodo={removeTodo}
+            toggleTodo={toggleTodo}
+          />
+        {/if}
       {/each}
     </ul>
     <form class="todo-box" on:submit={addTodo} >
