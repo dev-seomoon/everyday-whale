@@ -52,19 +52,17 @@
   <Nav />
   <MainWhale />
   <section class="main-todo">
-    {#if $todoList}
-      <ul>
-        {#each $todoList as todo}
-          {#if !todo.finishDate}
-            <TodoItem 
-              todo={todo}
-              removeTodo={removeTodo}
-              toggleTodo={toggleTodo}
-            />
-          {/if}
-        {/each}
-      </ul>
-    {/if}
+    <ul>
+      {#each $todoList as todo}
+        {#if !todo.finishDate}
+          <TodoItem 
+            todo={todo}
+            removeTodo={removeTodo}
+            toggleTodo={toggleTodo}
+          />
+        {/if}
+      {/each}
+    </ul>
     <form class="todo-box" on:submit={addTodo} >
       <input type="text" placeholder="새로운 할 일" bind:value={todoValue} />
       <button type="button" on:click={addTodo} />
