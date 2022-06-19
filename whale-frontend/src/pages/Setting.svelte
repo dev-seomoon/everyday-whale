@@ -1,5 +1,16 @@
 <script>
+  import { replace } from "svelte-spa-router";
   import BackButton from "../components/BackButton.svelte";
+  import { STORAGE_KEYS } from "../constants";
+
+  const reset = () => {
+    const resetConfirm = confirm("정말 초기화 하시겠습니까?\n모든 데이터가 영구적으로 삭제됩니다.");
+
+    if (resetConfirm) {
+      STORAGE_KEYS.forEach((key) => localStorage.removeItem(key));
+      replace("/start");
+    }
+  };
 </script>
 
 <main class="back-wave-bg">
@@ -7,7 +18,7 @@
   <section class="first">
     <h2>초기화</h2>
     <p>지금까지의 모든 기록을 초기화하고 다시 시작합니다.</p>
-    <button type="button">초기화하기</button>
+    <button type="button" on:click={reset}>초기화하기</button>
   </section>
   <hr />
   <section>

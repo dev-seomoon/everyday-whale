@@ -4,6 +4,8 @@ export const EXP_SCOPE = [9, 34, 52, 108, 154, 162];
 
 export const DEVIDER = [3, 5, 6, 7, 8, 10, 20];
 
+export const STORAGE_KEYS = ["name", "level", "todoList", "exp", "sumCount"];
+
 export const STORY = [
   [
     "웨일은 태어나기 전 마음속으로 긴 카운트를 세었습니다. 1년, 2년, 3년, 4년, 그리고 마지막 5년이 되던 날 웨일은 깨어날 준비를 마쳤습니다.",
