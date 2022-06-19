@@ -1,12 +1,34 @@
 <script>
+import { replace } from "svelte-spa-router";
 import StartWhale from "../components/StartWhale.svelte";
+import { name, level, exp, doneCount, todoList } from "../store";
+
+let nameValue = '';
+
+const initWhale = () => {
+  exp.set('0.0%');
+  level.set('1');
+  doneCount.set('0');
+  todoList.set([]);
+}
+
+const start = () => {
+  if (nameValue === '') {
+    alert('웨일의 이름을 지어주세요!');
+    return;
+  }
+  name.set(nameValue);
+  initWhale();
+  replace('/');
+};
+
 </script>
 
 <main>
   <h1>목표를 향해 함께 달릴<br/> 웨일의 이름을 지어주세요!</h1>
   <StartWhale />
-  <input type="text" placeholder="이름" />
-  <button type="button">시작하기</button>
+  <input type="text" placeholder="이름" bind:value={nameValue} />
+  <button type="button" on:click={start}>시작하기</button>
 </main>
 
 <style>
