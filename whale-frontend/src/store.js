@@ -51,7 +51,7 @@ const getLevel = (doneCount) => {
   else if (doneCount < EXP_SCOPE[5])
     level = Math.floor((doneCount - EXP_SCOPE[3]) / DEVIDER[4]) + 20;
   else
-    level = Math.floor((doneCount - EXP_SCOPE[4]) / DEVIDER[5]) + 27;
+    level = Math.floor((doneCount - EXP_SCOPE[5]) / DEVIDER[5]) + 27;
 
   return level;
 }
