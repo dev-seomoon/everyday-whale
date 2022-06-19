@@ -11,6 +11,18 @@
     selectedStoryBtn = order;
     currentScope = LEVEL_SCOPE[selectedStoryBtn - 1];
   };
+
+  const modifyName = () => {
+    const newName = prompt('새로운 이름을 지어주세요!', $name);
+    
+    if (!newName) return;
+    if (newName === '')
+    {
+      alert('한 글자 이상의 이름을 지어주세요.\n이름 없는 고래가 되면 슬프잖아요.');
+      return;
+    }
+    name.set(newName);
+  }
 </script>
 
 <main>
@@ -23,7 +35,7 @@
 
     <div class="whale-name-wrap">
       <h2 class="whale-name">Lv.{$level} {$name}</h2>
-      <button type="button" class="btn-modify-name">이름 변경</button>
+      <button type="button" class="btn-modify-name" on:click={modifyName}>이름 변경</button>
     </div>
 
     <div class="progress-container">
